@@ -8,3 +8,9 @@ __pycache__/
 
 # Virtual environments
 .venv 
+
+# FAISS 
+*.faiss 
+
+# Pickle file
+*.pkl
