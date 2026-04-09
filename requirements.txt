@@ -1,0 +1,17 @@
+# Core LLM Framework
+langchain
+langchain-community
+langchain-huggingface
+
+# Local Embeddings & Models
+transformers
+sentence-transformers
+
+# Vector Database
+faiss-cpu
+
+# Document Processing
+pypdf
+
+# Testing
+pytest
