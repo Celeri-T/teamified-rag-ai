@@ -11,7 +11,7 @@ sentence-transformers
 faiss-cpu
 
 # Document Processing
-pypdf
+pymupdf
 
 # Testing
 pytest
