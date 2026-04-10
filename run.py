@@ -42,7 +42,11 @@ def main():
         print(f'- "{shortened}..."')
 
     response = rag_engine.invoke(query)
+
+    # Clean LLM repsonse
     cleaned_response = response.split("Assistant:")[0].strip()
+    cleaned_response = cleaned_response.split("Answer:")[0].strip()
+    cleaned_response = cleaned_response.split("Note:")[0].strip()
     print(f"\nLLM Response:\n{cleaned_response}")
 
     # Save FAISS index if not exists
