@@ -18,7 +18,7 @@ This project requires **Python 3.10+**. It is highly recommended to use a virtua
 
 **1. Clone the repository**
 ```bash
-git clone [https://github.com/yourusername/philippine-history-rag.git](https://github.com/yourusername/philippine-history-rag.git)
+git clone [https://github.com/Celeri-T/teamified-rag-ai.git](https://github.com/Celeri-T/teamified-rag-ai.git)
 cd philippine-history-rag
 ```
 
@@ -49,7 +49,7 @@ The system uses the **Qwen3-0.6B** model. On the first run, the system will auto
 ## 🏃 Run Instructions
 
 ### Data Ingestion
-Ensure your source document (`PHILIPPINE-HISTORY-SOURCE-BOOK-FINAL-SEP022021.pdf`) is placed in the `data/` directory.
+Ensure your source document (`philippine_history.pdf`) is placed in the local directory.
 
 ### Start the Application
 Run the main script to initialize the vector database and start the interactive session:
