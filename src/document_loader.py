@@ -1,10 +1,10 @@
-import os
+from pathlib import Path
 
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-from src.config import CHUNK_OVERLAP, CHUNK_SIZE, DATA_DIR
+from src.config import CHUNK_OVERLAP, CHUNK_SIZE
 
 
 def load_and_chunk_pdf(file_name: str) -> list[Document]:
@@ -19,12 +19,10 @@ def load_and_chunk_pdf(file_name: str) -> list[Document]:
     Returns:
         list[Document]: A list containing the resulting chunks.
     """
-    file_path = os.path.join(DATA_DIR, file_name)
+    file_path = Path(file_name)
 
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(
-            f"Error: Could not find {file_path}. Please add it inside '{DATA_DIR}'."
-        )
+    if not file_path.exists():
+        raise FileNotFoundError(f"Error: Could not find {file_path}.")
 
     loader = PyMuPDFLoader(file_path)
     documents = loader.load()

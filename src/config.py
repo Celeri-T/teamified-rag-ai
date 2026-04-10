@@ -20,14 +20,10 @@ CHUNK_SIZE = 800
 CHUNK_OVERLAP = 100
 
 # System Paths
-DATA_DIR = "data"
 FAISS_INDEX_PATH = "faiss_index"
 
 # PDF test file
-PDF_FILENAME = "PHILIPPINE-HISTORY-SOURCE-BOOK-FINAL-SEP022021.pdf"
+PDF_FILENAME = "philippine_history.pdf"
 
 # LLM directory
 MODELS_DIR = "models"
-
-# Automatically create the data folder if it doesn't exist
-os.makedirs(DATA_DIR, exist_ok=True)
