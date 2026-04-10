@@ -4,7 +4,7 @@ from langchain_core.runnables import RunnablePassthrough
 
 
 def get_rag_chain(llm, vector_db):
-    retriever = vector_db.as_retriever(search_kwargs={"k": 3})
+    retriever = vector_db.as_retriever(search_kwargs={"k": 2})
 
     template = """
     Instruction: Use the context to provide a direct 5-sentence answer. 
