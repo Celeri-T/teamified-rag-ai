@@ -1,6 +1,7 @@
 from src.config import PDF_FILENAME
 from src.document_loader import load_and_chunk_pdf
 from src.llm import get_llm
+from src.preprocessing import preprocess_chunks
 from src.utils import clear_console
 from src.vector_store import (
     create_vector_store,
@@ -15,10 +16,11 @@ def main():
     else:
         # Chunk documents
         raw_chunks = load_and_chunk_pdf(PDF_FILENAME)
+        processed_chunks = preprocess_chunks(raw_chunks)
 
         # Initialize FAISS and embed the chunks
         vector_db = create_vector_store()
-        vector_db.add_documents(raw_chunks)
+        vector_db.add_documents(processed_chunks)
     # Clears the console and ask user for query.
     # clear_console()
     query = input("User Query: ")
