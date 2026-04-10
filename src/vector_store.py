@@ -22,19 +22,17 @@ def get_embedding_model() -> HuggingFaceEmbeddings:
     )
 
 
-def create_vector_store(chunks: List[Document]) -> FAISS:
-    """Initialize FAISS using all-MiniLM-L6-v2 as embedding model
-
-    Args:
-        chunks (List[Document]): The list containing the chunks from the text splitter.
+def create_vector_store() -> FAISS:
+    """Initialize FAISS using all-MiniLM-L6-v2 as embedding model.
 
     Returns:
-        FAISS: The initialized FAISS from documents and embeddings.
+        FAISS: Initialized faiss
     """
     embeddings = get_embedding_model()
 
-    # For FAISS to know vector size
-    index = faiss.IndexFlatL2(len(embeddings.embed_query("hello world")))
+    # For FAISS to know vector size using Euclidean distance
+    sample_embedding = embeddings.embed_query("hello world")
+    index = faiss.IndexFlatL2(len(sample_embedding))
 
     # vector_store = FAISS.from_documents(chunks, embeddings)
     vector_store = FAISS(
@@ -43,8 +41,5 @@ def create_vector_store(chunks: List[Document]) -> FAISS:
         docstore=InMemoryDocstore(),
         index_to_docstore_id={},
     )
-
-    # Can save locally
-    # vector_store.save_local(FAISS_INDEX_PATH)
 
     return vector_store
