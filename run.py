@@ -8,7 +8,7 @@ from src.vector_store import create_vector_store
 def main():
     # Chunk documents and store in FAISS vector store
     chunks = load_and_chunk_pdf(PDF_FILENAME)
-    vector_db = create_vector_store(chunks)
+    vector_db = create_vector_store()
     vector_db.add_documents(chunks)
 
     # Clears the console and ask user for query.
