@@ -13,7 +13,7 @@ logging.getLogger("langchain_huggingface").setLevel(logging.ERROR)
 
 # Model Configuration
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-LLM_MODEL = "google/gemma-2b-it"
+LLM_MODEL = "Qwen/Qwen3-0.6B"
 
 # Text Chunking Configuration
 CHUNK_SIZE = 800
@@ -25,6 +25,9 @@ FAISS_INDEX_PATH = "faiss_index"
 
 # PDF test file
 PDF_FILENAME = "PHILIPPINE-HISTORY-SOURCE-BOOK-FINAL-SEP022021.pdf"
+
+# LLM directory
+MODELS_DIR = "models"
 
 # Automatically create the data folder if it doesn't exist
 os.makedirs(DATA_DIR, exist_ok=True)
