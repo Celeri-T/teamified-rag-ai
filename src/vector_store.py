@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import faiss
 from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
@@ -40,3 +42,30 @@ def create_vector_store() -> FAISS:
     )
 
     return vector_store
+
+
+def create_vector_store_from_local() -> FAISS:
+    """Use saved FAISS index to create vector store.
+
+    Returns:
+        FAISS: FAISS vector store.
+    """
+    embeddings = get_embedding_model()
+    return FAISS.load_local(
+        "faiss_index", embeddings, allow_dangerous_deserialization=True
+    )
+
+
+def faiss_index_exists() -> bool:
+    """Checks if index.faiss and index.pkl already exists.
+
+    Returns:
+        bool: True if both files exist. False if not.
+    """
+    index_faiss_path = Path("faiss_index/index.faiss")
+    index_pkl_path = Path("faiss_index/index.pkl")
+
+    if index_faiss_path.is_file() and index_pkl_path.is_file():
+        return True
+    else:
+        return False
