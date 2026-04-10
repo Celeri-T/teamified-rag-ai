@@ -18,8 +18,8 @@ This project requires **Python 3.10+**. It is highly recommended to use a virtua
 
 **1. Clone the repository**
 ```bash
-git clone [https://github.com/Celeri-T/teamified-rag-ai.git](https://github.com/Celeri-T/teamified-rag-ai.git)
-cd philippine-history-rag
+git clone https://github.com/Celeri-T/teamified-rag-ai.git
+cd teamified-rag-ai
 ```
 
 **2. Create and Activate Virtual Environment**
@@ -58,7 +58,7 @@ python run.py
 ```
 
 ### Usage
-* Once the **"User Query:"** prompt appears, you can ask questions about Philippine history.
+* Once the **"User Query:"** prompt appears, you can ask questions about anything in the PDF.
 
 ---
 
