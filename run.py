@@ -11,7 +11,7 @@ from src.vector_store import (
 
 
 def main():
-    if faiss_index_exists:
+    if faiss_index_exists():
         vector_db = create_vector_store_from_local()
     else:
         # Chunk documents
@@ -23,6 +23,7 @@ def main():
         vector_db.add_documents(processed_chunks)
     # Clears the console and ask user for query.
     # clear_console()
+
     query = input("User Query: ")
     results = vector_db.similarity_search(query, k=2)
 
