@@ -1,9 +1,6 @@
-from typing import List
-
 import faiss
 from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
-from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEmbeddings
 
 from src.config import EMBEDDING_MODEL, FAISS_INDEX_PATH
