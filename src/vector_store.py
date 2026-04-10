@@ -52,7 +52,7 @@ def create_vector_store_from_local() -> FAISS:
     """
     embeddings = get_embedding_model()
     return FAISS.load_local(
-        "faiss_index", embeddings, allow_dangerous_deserialization=True
+        FAISS_INDEX_PATH, embeddings, allow_dangerous_deserialization=True
     )
 
 
@@ -62,8 +62,8 @@ def faiss_index_exists() -> bool:
     Returns:
         bool: True if both files exist. False if not.
     """
-    index_faiss_path = Path("faiss_index/index.faiss")
-    index_pkl_path = Path("faiss_index/index.pkl")
+    index_faiss_path = Path(FAISS_INDEX_PATH).joinpath("index.faiss")
+    index_pkl_path = Path(FAISS_INDEX_PATH).joinpath("index.pkl")
 
     if index_faiss_path.is_file() and index_pkl_path.is_file():
         return True
