@@ -1,5 +1,7 @@
 from typing import List
 
+import faiss
+from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -21,7 +23,7 @@ def get_embedding_model() -> HuggingFaceEmbeddings:
 
 
 def create_vector_store(chunks: List[Document]) -> FAISS:
-    """Takes text chunks, embeds them, and stores them in a FAISS index.
+    """Initialize FAISS using all-MiniLM-L6-v2 as embedding model
 
     Args:
         chunks (List[Document]): The list containing the chunks from the text splitter.
@@ -31,9 +33,18 @@ def create_vector_store(chunks: List[Document]) -> FAISS:
     """
     embeddings = get_embedding_model()
 
-    vector_store = FAISS.from_documents(chunks, embeddings)
+    # For FAISS to know vector size
+    index = faiss.IndexFlatL2(len(embeddings.embed_query("hello world")))
 
-    # Save locally so you don't have to re-embed every time you run
-    vector_store.save_local(FAISS_INDEX_PATH)
+    # vector_store = FAISS.from_documents(chunks, embeddings)
+    vector_store = FAISS(
+        embedding_function=embeddings,
+        index=index,
+        docstore=InMemoryDocstore(),
+        index_to_docstore_id={},
+    )
+
+    # Can save locally
+    # vector_store.save_local(FAISS_INDEX_PATH)
 
     return vector_store
