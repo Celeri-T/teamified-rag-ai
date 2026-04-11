@@ -12,7 +12,7 @@ from src.vector_store import (
 
 
 def main():
-    if faiss_index_exists:
+    if faiss_index_exists():
         vector_db = create_vector_store_from_local()
     else:
         # Chunk documents
